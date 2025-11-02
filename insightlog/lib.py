@@ -387,7 +387,7 @@ class InsightLogAnalyzer:
                     for item in data:
                         writer.writerow({f: getattr(item, f)
                                         for f in fieldnames})
-            print(f" CSV export successful: {path}")
+            print(f" CSv export successful: {path}")
         except Exception as e:
             print(f" Failed to export CSV: {e}")
 
