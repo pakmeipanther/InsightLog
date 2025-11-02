@@ -113,4 +113,12 @@ class TestInsightLog(TestCase):
         self.assertEqual(filters[1]['filter_pattern'], 'test3')
         # The bug: remove_filter currently tries to remove by value, not index
 
+    def test_add_log_level_filter(self):
+        analyzer = InsightLogAnalyzer('nginx')
+        analyzer.add_log_level_filter('ERROR')
+        filters = analyzer.get_all_filters()
+        self.assertEqual(len(filters), 1)
+        self.assertEqual(filters[0]['filter_pattern'], 'ERROR')
+        self.assertEqual(filters[0]['is_reverse'], False)
+
 # TODO: Add more tests for edge cases and error handling

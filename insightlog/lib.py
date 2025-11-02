@@ -340,7 +340,13 @@ class InsightLogAnalyzer:
         Add a filter for log level (e.g., ERROR, WARNING)
         :param level: string
         """
-        pass  # Feature stub
+        if not isinstance(level, str):
+            raise ValueError("level must be a non-empty string")
+        normalized = level.strip()
+        if not normalized:
+            raise ValueError("level must be a non-empty string")
+        # Match the provided level regardless of case while keeping stored value simple for tests/debugging
+        self.add_filter(normalized, is_casesensitive=False)
 
     # TODO: Add support for time range filtering
     def add_time_range_filter(self, start, end):
