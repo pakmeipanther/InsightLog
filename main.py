@@ -14,7 +14,8 @@ def main():
         analyzer.add_filter(args.filter)
     requests = analyzer.get_requests()
     for req in requests:
-        print(req)
+        print(req) 
 
 if __name__ == '__main__':
     main() 
+
